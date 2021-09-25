@@ -1,4 +1,11 @@
-import { createApp } from "./create_greet_app.ts";
-const app = createApp();
-// await app.listen({ port: 8888 });
-addEventListener("fetch", app.fetchEventHandler());
+addEventListener("fetch", (event) => {
+  event.respondWith(
+    new Response("Hello world", {
+      status: 200,
+      headers: {
+        server: "deploy",
+        "content-type": "text/plain",
+      },
+    }),
+  );
+});
